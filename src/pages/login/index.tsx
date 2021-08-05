@@ -8,6 +8,10 @@ export default function Login({ env }) {
   );
 }
 
-Login.getInitialProps = async () => {
-  return { env: process.env.NEXT_PUBLIC_API_URL };
-};
+export async function getServerSideProps() {
+  return {
+    props: {
+      env: process.env.NEXT_PUBLIC_API_URL,
+    },
+  };
+}
