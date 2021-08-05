@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import api from './api';
 import { Categories } from '../types/categories';
 
-async function getAllCategories(): Promise<Categories[]> {
+async function getAll(): Promise<Categories[]> {
   const { data } = await api.query({
     query: gql`
       query Categories {
@@ -18,4 +18,4 @@ async function getAllCategories(): Promise<Categories[]> {
   return data.Categories;
 }
 
-export { getAllCategories };
+export { getAll };
