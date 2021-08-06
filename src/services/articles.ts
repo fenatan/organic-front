@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { ArticleInput } from 'types/articles';
 
 import api from './api';
 
@@ -14,4 +15,23 @@ async function getAll(): Promise<string> {
   return data.Articles;
 }
 
-export { getAll };
+async function createArticle(createArticle: ArticleInput): Promise<string> {
+  const { data } = await api.mutate({
+    mutation: gql`
+      mutation createArticle($input: createArticleInput) {
+        createArticle(input: $input) {
+          article {
+            title
+          }
+        }
+      }
+    `,
+    variables: {
+      input: { data: createArticle },
+    },
+  });
+
+  return data.Articles;
+}
+
+export { getAll, createArticle };
