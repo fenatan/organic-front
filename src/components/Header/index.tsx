@@ -74,8 +74,6 @@ export default function Header() {
           )}
         </Flex>
       </Box>
-
-      <Box px={20}>Main Content Here</Box>
     </>
   );
 }
