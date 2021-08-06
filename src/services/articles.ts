@@ -3,16 +3,18 @@ import { ArticleInput } from 'types/articles';
 
 import api from './api';
 
-async function getAll(): Promise<string> {
+async function getAll(): Promise<ArticleInput[]> {
   const { data } = await api.query({
     query: gql`
       query Articles {
-
+        articles {
+          title
+        }
       }
     `,
   });
 
-  return data.Articles;
+  return data.articles;
 }
 
 async function getArticleBySlug(slug: string): Promise<string> {
@@ -50,4 +52,26 @@ async function createArticle(createArticle: ArticleInput): Promise<string> {
   return data.Articles;
 }
 
-export { getAll, createArticle };
+async function getMeArticles(userId: number): Promise<ArticleInput[]> {
+  const { data } = await api.query({
+    query: gql`
+      query articles($where: JSON) {
+        articles(where: $where) {
+          title
+          content
+          slug
+          image {
+            url
+          }
+        }
+      }
+    `,
+    variables: {
+      where: { 'author.id': userId },
+    },
+  });
+
+  return data.articles;
+}
+
+export { getAll, createArticle, getMeArticles };
