@@ -29,7 +29,7 @@ export default function blogPostWithImage({ article }) {
       </Box>
       <Box maxW="230px">
         <Heading cursor="pointer" color="white.100" mb={1} fontSize="20px">
-          {article?.title}
+          {article?.title || 'Title'}
         </Heading>
         <Heading
           cursor="pointer"
