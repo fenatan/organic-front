@@ -10,11 +10,14 @@ import {
 
 import { FiEye, FiDownload } from 'react-icons/fi';
 
-export default function Files() {
+export default function Files({ article }) {
+  function goUrl(url) {
+    window.location = url;
+  }
   return (
     <>
-      <Heading mb={14}>Título</Heading>
-      {[1, 2, 3, 4].map((i) => (
+      <Heading mb={14}>{article.title}</Heading>
+      {article.attachments.map((item, i) => (
         <Box
           key={i}
           mb={8}
@@ -27,10 +30,10 @@ export default function Files() {
         >
           <Box ml={8}>
             <Heading fontSize="16px" mb={1}>
-              Title
+              {item.title}
             </Heading>
             <Heading fontSize="16px" fontWeight="normal">
-              Nome e sobrenome, data, formato
+              {item.title} - 05/08/2021
             </Heading>
           </Box>
           <Box
@@ -53,7 +56,7 @@ export default function Files() {
                 />
               }
             >
-              <BreadcrumbItem>
+              <BreadcrumbItem onClick={() => goUrl(item.file.url)}>
                 <BreadcrumbLink
                   href="#"
                   _focus={{ boxShadow: 'none' }}
@@ -68,7 +71,7 @@ export default function Files() {
                 </BreadcrumbLink>
               </BreadcrumbItem>
 
-              <BreadcrumbItem>
+              <BreadcrumbItem onClick={() => goUrl(item.file.url)}>
                 <BreadcrumbLink
                   href="#"
                   _hover={{ textDecoration: 'none' }}

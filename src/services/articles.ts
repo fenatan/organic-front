@@ -6,9 +6,10 @@ import api from './api';
 async function getAll(): Promise<ArticleInput[]> {
   const { data } = await api.query({
     query: gql`
-      query Articles {
+      query articles {
         articles {
           title
+          slug
         }
       }
     `,
@@ -17,11 +18,11 @@ async function getAll(): Promise<ArticleInput[]> {
   return data.articles;
 }
 
-async function getArticleBySlug(slug: string): Promise<string> {
+async function getArticleBySlug(slug: string): Promise<ArticleInput> {
   const { data } = await api.query({
     query: gql`
-      query Articles {
-        Articles(where: $where) {
+      query articles($where: JSON) {
+        articles(where: $where) {
           title
         }
       }
@@ -31,7 +32,7 @@ async function getArticleBySlug(slug: string): Promise<string> {
     },
   });
 
-  return data.Articles;
+  return data.articles[0];
 }
 async function createArticle(createArticle: ArticleInput): Promise<string> {
   const { data } = await api.mutate({
@@ -74,4 +75,4 @@ async function getMeArticles(userId: number): Promise<ArticleInput[]> {
   return data.articles;
 }
 
-export { getAll, createArticle, getMeArticles };
+export { getAll, createArticle, getMeArticles, getArticleBySlug };

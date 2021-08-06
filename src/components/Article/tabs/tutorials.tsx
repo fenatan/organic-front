@@ -1,40 +1,27 @@
 import { Heading, Text, Box } from '@chakra-ui/react';
 
-export default function Article() {
+export default function Article({ article }) {
   return (
     <>
-      <Heading mb={14}>Título</Heading>
-      <Box mb={16}>
-        <Box mb={4} w="770px" h="300px" bg="gray.400"></Box>
-        <Box maxW="770px">
-          <Heading mb={2} fontSize="16px">
-            Título
-          </Heading>
-          <Text textAlign="left">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-            consequat.
-          </Text>
+      <Heading mb={14}>{article.title}</Heading>
+      {article.tutorials.map((tutorial, idx) => (
+        <Box mb={16} key={idx}>
+          <Box mb={4} w="770px" h="300px" bg="gray.400">
+            <iframe
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              src="https://www.youtube.com/embed/3pRdTmRxZAk"
+              width="560"
+              height="315"
+            ></iframe>
+          </Box>
+          <Box maxW="770px">
+            <Heading mb={2} fontSize="16px">
+              {tutorial.title}
+            </Heading>
+            <Text textAlign="left">{tutorial.description}</Text>
+          </Box>
         </Box>
-      </Box>
-
-      <Box mb={16}>
-        <Box mb={4} w="770px" h="300px" bg="gray.400"></Box>
-        <Box maxW="770px">
-          <Heading mb={2} fontSize="16px">
-            Título
-          </Heading>
-          <Text textAlign="left">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-            consequat.
-          </Text>
-        </Box>
-      </Box>
+      ))}
     </>
   );
 }

@@ -1,12 +1,23 @@
-import { Heading, Box, Wrap, WrapItem, Text, Button } from '@chakra-ui/react';
+import {
+  Heading,
+  Box,
+  Wrap,
+  WrapItem,
+  Text,
+  Button,
+  Image,
+} from '@chakra-ui/react';
 
-export default function UseCases() {
+export default function UseCases({ article }) {
+  function goUrl(url) {
+    window.location = url;
+  }
   return (
     <>
       <Box mb={8}>
-        <Heading mb={14}>Título</Heading>
+        <Heading mb={14}>{article.title}</Heading>
         <Wrap spacing={5}>
-          {[1, 2, 3, 4].map((i) => (
+          {article.cases.map((item, i) => (
             <WrapItem key={i}>
               <Box
                 mb={5}
@@ -23,9 +34,11 @@ export default function UseCases() {
                   bg="gray.400"
                   borderRadius="16px 16px 0px 0px"
                   display="flex"
-                ></Box>
+                >
+                  <Image src={item.image?.url} layout={'fill'}></Image>
+                </Box>
                 <Heading mx={4} mt={4} fontSize="16px">
-                  Título
+                  {item.title}
                 </Heading>
                 <Text
                   maxH="160px"
@@ -35,9 +48,7 @@ export default function UseCases() {
                   mt={2}
                   textAlign="left"
                 >
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                  diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                  aliquam erat.
+                  {item.description}
                 </Text>
                 <Button
                   ml={8}
@@ -57,6 +68,7 @@ export default function UseCases() {
                   _hover={{
                     opacity: '0.8',
                   }}
+                  onClick={() => goUrl(item.url)}
                 >
                   Acesse aqui
                 </Button>
