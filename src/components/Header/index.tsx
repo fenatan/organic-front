@@ -32,7 +32,20 @@ export default function Header() {
           </Container>
 
           {!isLogged ? (
-            <Button variant={'solid'} colorScheme={'transparent'} size={'sm'}>
+            <Button
+              size="sm"
+              fontSize="14px"
+              border="2px"
+              px={6}
+              py={2.5}
+              borderRadius="3xl"
+              borderColor="gray.50"
+              color="gray.50"
+              bg="transparent"
+              _focus={{
+                boxShadow: '',
+              }}
+            >
               Entrar
             </Button>
           ) : (
