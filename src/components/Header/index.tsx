@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <>
-      <Box color="gray.50" bg="black.100" px={20}>
+      <Box color="gray.50">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack alignItems={'center'}>
             <Logo />
