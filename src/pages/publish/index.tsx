@@ -153,15 +153,25 @@ export default function Publish({ categories, tags }) {
       };
     });
   }
-
+  function slugify(text) {
+    return text
+      .toString()
+      .toLowerCase()
+      .normalize('NFD')
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-');
+  }
   async function handleSave() {
     const result = await createArticle({
       ...article,
       tags: selectedItems.map((i) => i.value),
       content: content,
       author: +context.user.id,
+      slug: slugify(article.title),
     });
-    Router.push('/login');
+    Router.push('/');
   }
 
   return (
