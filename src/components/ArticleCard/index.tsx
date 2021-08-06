@@ -10,7 +10,7 @@ export default function blogPostWithImage({ article }) {
   return (
     <Box mb={5}>
       <Box
-        onClick={() => router.push('/articles/1')}
+        onClick={() => router.push('/articles')}
         cursor="pointer"
         position="relative"
         overflow={'hidden'}
@@ -30,7 +30,7 @@ export default function blogPostWithImage({ article }) {
       </Box>
       <Box maxW="230px">
         <Heading cursor="pointer" color="white.100" mb={1} fontSize="20px">
-          {article.title}
+          {article?.title || 'Title'}
         </Heading>
         <Heading
           cursor="pointer"
