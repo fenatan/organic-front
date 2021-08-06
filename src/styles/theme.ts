@@ -29,11 +29,12 @@ const theme = {
     black: {
       50: '#000000',
       100: '#191A1A', // usando
+      200: '#111111', // usando
     },
     gray: {
       50: '#E5E6E7', //usando
       100: '#C4C4C4',
-      200: '#999',
+      200: '#999', // usando
       300: '#666', // usando
       400: '#333', // usando
     },
