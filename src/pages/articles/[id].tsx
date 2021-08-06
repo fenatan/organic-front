@@ -39,7 +39,7 @@ export default function ArticlePage({ article }) {
         height="286px"
         bg="gray.400"
         position="relative"
-        bgImage={article.image?.url}
+        bgImage={article?.image?.url}
         bgSize="cover"
       ></Box>
       <Box bgColor="black.100" px={20}>

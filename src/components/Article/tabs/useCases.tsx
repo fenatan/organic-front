@@ -35,7 +35,7 @@ export default function UseCases({ article }) {
                   borderRadius="16px 16px 0px 0px"
                   display="flex"
                 >
-                  <Image src={item.image?.url} layout={'fill'}></Image>
+                  <Image src={item?.image?.url} layout={'fill'}></Image>
                 </Box>
                 <Heading mx={4} mt={4} fontSize="16px">
                   {item.title}
