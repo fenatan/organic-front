@@ -28,7 +28,7 @@ const theme = {
     },
     black: {
       50: '#000000',
-      100: '#111111', // usando
+      100: '#191A1A', // usando
     },
     gray: {
       50: '#E5E6E7', //usando

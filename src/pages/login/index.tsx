@@ -55,7 +55,6 @@ export default function Login() {
       <Button onClick={handleLogin} colorScheme="green">
         Entrar
       </Button>
-      {context.user.email}
     </>
   );
 }
