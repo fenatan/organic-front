@@ -23,7 +23,7 @@ const tabs = {
   others: 'others',
 };
 
-export default function Article() {
+export default function Article({ article }) {
   const [selectedTab, setSelectedTab] = useState(tabs.article);
 
   return (
@@ -158,11 +158,11 @@ export default function Article() {
         </Flex>
       </Box>
       <Box w="100%">
-        {selectedTab === tabs.article && <ArticleTab />}
-        {selectedTab === tabs.tutorials && <TutorialsTab />}
-        {selectedTab === tabs.useCases && <UseCasesTab />}
-        {selectedTab === tabs.files && <FilesTab />}
-        {selectedTab === tabs.others && <ArticleTab />}
+        {selectedTab === tabs.article && <ArticleTab article={article} />}
+        {selectedTab === tabs.tutorials && <TutorialsTab article={article} />}
+        {selectedTab === tabs.useCases && <UseCasesTab article={article} />}
+        {selectedTab === tabs.files && <FilesTab article={article} />}
+        {selectedTab === tabs.others && <ArticleTab article={article} />}
       </Box>
     </Box>
   );

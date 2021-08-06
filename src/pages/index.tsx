@@ -43,7 +43,7 @@ export default function HomePage({ categories }) {
             <Heading mb={10}>{selectedCategory || 'Descomplica'}</Heading>
             <Wrap spacing={5}>
               {articles.map((article) => (
-                <WrapItem key={article.id}>
+                <WrapItem key={article?.id}>
                   <Card article={article} />
                 </WrapItem>
               ))}

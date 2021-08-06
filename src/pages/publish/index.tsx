@@ -170,7 +170,7 @@ export default function Publish({ categories, tags }) {
       tags: selectedItems.map((i) => i.value),
       content: content,
       author: +context.user.id,
-      slug: slugify(article.title),
+      slug: slugify(article?.title),
     });
     Router.push('/');
   }

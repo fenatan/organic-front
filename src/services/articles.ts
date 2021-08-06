@@ -6,9 +6,51 @@ import api from './api';
 async function getAll(): Promise<ArticleInput[]> {
   const { data } = await api.query({
     query: gql`
-      query Articles {
+      query articles {
         articles {
           title
+          slug
+          author {
+            username
+            email
+          }
+          created_at
+          updated_at
+          description
+          content
+          slug
+          category {
+            name
+          }
+          image {
+            url
+          }
+          attachments {
+            title
+            file {
+              url
+            }
+          }
+          tutorials {
+            title
+            videoUrl
+            description
+          }
+          cases {
+            title
+            description
+            url
+            image {
+              url
+            }
+          }
+          embeddeds {
+            title
+            urlEmbedded
+          }
+          tags {
+            title
+          }
         }
       }
     `,
@@ -25,8 +67,47 @@ async function getAllByCategory(slug: string): Promise<[]> {
           name
           articles {
             title
+            slug
             author {
               username
+              email
+            }
+            created_at
+            updated_at
+            description
+            content
+            slug
+            category {
+              name
+            }
+            image {
+              url
+            }
+            attachments {
+              title
+              file {
+                url
+              }
+            }
+            tutorials {
+              title
+              videoUrl
+              description
+            }
+            cases {
+              title
+              description
+              url
+              image {
+                url
+              }
+            }
+            embeddeds {
+              title
+              urlEmbedded
+            }
+            tags {
+              title
             }
           }
         }
@@ -36,12 +117,54 @@ async function getAllByCategory(slug: string): Promise<[]> {
   return data?.categories[0]?.articles || [];
 }
 
-async function getArticleBySlug(slug: string): Promise<string> {
+async function getArticleBySlug(slug: string): Promise<ArticleInput> {
   const { data } = await api.query({
     query: gql`
-      query Articles {
-        Articles(where: $where) {
+      query articles($where: JSON) {
+        articles(where: $where) {
           title
+          slug
+          author {
+            username
+            email
+          }
+          created_at
+          updated_at
+          description
+          content
+          slug
+          category {
+            name
+          }
+          image {
+            url
+          }
+          attachments {
+            title
+            file {
+              url
+            }
+          }
+          tutorials {
+            title
+            videoUrl
+            description
+          }
+          cases {
+            title
+            description
+            url
+            image {
+              url
+            }
+          }
+          embeddeds {
+            title
+            urlEmbedded
+          }
+          tags {
+            title
+          }
         }
       }
     `,
@@ -50,7 +173,7 @@ async function getArticleBySlug(slug: string): Promise<string> {
     },
   });
 
-  return data.Articles;
+  return data.articles[0];
 }
 async function createArticle(createArticle: ArticleInput): Promise<string> {
   const { data } = await api.mutate({
@@ -77,10 +200,47 @@ async function getMeArticles(userId: number): Promise<ArticleInput[]> {
       query articles($where: JSON) {
         articles(where: $where) {
           title
+          slug
+          author {
+            username
+            email
+          }
+          created_at
+          updated_at
+          description
           content
           slug
+          category {
+            name
+          }
           image {
             url
+          }
+          attachments {
+            title
+            file {
+              url
+            }
+          }
+          tutorials {
+            title
+            videoUrl
+            description
+          }
+          cases {
+            title
+            description
+            url
+            image {
+              url
+            }
+          }
+          embeddeds {
+            title
+            urlEmbedded
+          }
+          tags {
+            title
           }
         }
       }
@@ -93,4 +253,10 @@ async function getMeArticles(userId: number): Promise<ArticleInput[]> {
   return data.articles;
 }
 
-export { getAll, createArticle, getMeArticles, getAllByCategory };
+export {
+  getAll,
+  createArticle,
+  getMeArticles,
+  getArticleBySlug,
+  getAllByCategory,
+};
