@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
@@ -31,7 +32,7 @@ import {
   casesInitialState,
   attachmentsInitialState,
   embeddedsInitialState,
-} from './data';
+} from 'helpers/publishPage/data';
 import CategoriesService from 'services/categories';
 import TagsService from 'services/tags';
 import { CUIAutoComplete } from 'chakra-ui-autocomplete';
@@ -164,7 +165,7 @@ export default function Publish({ categories, tags }) {
       .replace(/\-\-+/g, '-');
   }
   async function handleSave() {
-    const result = await createArticle({
+    await createArticle({
       ...article,
       tags: selectedItems.map((i) => i.value),
       content: content,

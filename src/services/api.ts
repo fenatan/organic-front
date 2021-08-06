@@ -31,7 +31,7 @@ export const uploadClient = new ApolloClient({
   ssrMode: true,
   link: authLink.concat(
     createUploadLink({
-      uri: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337/graphql',
+      uri: 'http://descomplicaja-1648230433.us-east-2.elb.amazonaws.com/graphql',
     })
   ),
   cache: new InMemoryCache(),
