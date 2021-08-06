@@ -5,18 +5,22 @@ import { Categories } from '../types/categories';
 
 const CategoriesService = {
   async getAll(): Promise<Categories[]> {
-    const { data } = await api.query({
-      query: gql`
-        query Categories {
-          Categories {
-            slug
-            name
+    try {
+      const { data } = await api.query({
+        query: gql`
+          query categories {
+            categories {
+              slug
+              name
+              id
+            }
           }
-        }
-      `,
-    });
-
-    return data.Categories;
+        `,
+      });
+      return data.categories;
+    } catch (e) {
+      console.log({ e: e.networkError.result.errors });
+    }
   },
 };
 
