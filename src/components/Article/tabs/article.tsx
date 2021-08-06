@@ -1,4 +1,13 @@
-import { Heading, Text, Box, Wrap, WrapItem, Button } from '@chakra-ui/react';
+import {
+  Heading,
+  Text,
+  Box,
+  Wrap,
+  WrapItem,
+  Button,
+  Icon,
+} from '@chakra-ui/react';
+import { FiBookmark, FiShare2, FiSlash } from 'react-icons/fi';
 
 export default function Article() {
   return (
@@ -122,9 +131,10 @@ export default function Article() {
             boxShadow: '',
           }}
           _hover={{
-            backgroundColor: 'trasparent',
+            opacity: '0.7',
           }}
         >
+          <Icon mr={2} w={4} h={4} color="#fff" as={FiBookmark} />
           Salvar
         </Button>
         <Button
@@ -141,9 +151,10 @@ export default function Article() {
             boxShadow: '',
           }}
           _hover={{
-            backgroundColor: 'trasparent',
+            opacity: '0.7',
           }}
         >
+          <Icon mr={2} w={4} h={4} color="#fff" as={FiShare2} />
           Compartilhar
         </Button>
         <Button
@@ -159,9 +170,10 @@ export default function Article() {
             boxShadow: '',
           }}
           _hover={{
-            backgroundColor: 'trasparent',
+            opacity: '0.7',
           }}
         >
+          <Icon mr={2} w={4} h={4} color="#fff" as={FiSlash} />
           Denunciar
         </Button>
       </Box>
