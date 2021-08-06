@@ -15,6 +15,22 @@ async function getAll(): Promise<string> {
   return data.Articles;
 }
 
+async function getArticleBySlug(slug: string): Promise<string> {
+  const { data } = await api.query({
+    query: gql`
+      query Articles {
+        Articles(where: $where) {
+          title
+        }
+      }
+    `,
+    variables: {
+      where: { slug },
+    },
+  });
+
+  return data.Articles;
+}
 async function createArticle(createArticle: ArticleInput): Promise<string> {
   const { data } = await api.mutate({
     mutation: gql`

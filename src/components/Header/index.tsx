@@ -16,22 +16,34 @@ import {
 
 import Logo from 'components/Logo';
 import Input from 'components/Input';
+import AuthContext from 'contexts/auth';
+import { useContext } from 'react';
+import Router from 'next/router';
 
 export default function Header() {
-  const [isLogged, setIsLogged] = useState(false);
-
+  const context = useContext(AuthContext);
+  function goLogin() {
+    Router.push('/login');
+  }
+  function handleClickLogo() {
+    Router.push('/');
+  }
   return (
     <>
       <Box color="gray.50">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <HStack alignItems={'center'}>
+          <HStack
+            cursor="pointer"
+            alignItems={'center'}
+            onClick={handleClickLogo}
+          >
             <Logo />
           </HStack>
           <Container maxW="lg">
             <Input placeholder="Pesquisar artigo" />
           </Container>
 
-          {!isLogged ? (
+          {!context.signed ? (
             <Button
               size="sm"
               fontSize="14px"
@@ -45,6 +57,7 @@ export default function Header() {
               _focus={{
                 boxShadow: '',
               }}
+              onClick={goLogin}
             >
               Entrar
             </Button>
@@ -57,18 +70,24 @@ export default function Header() {
                 cursor={'pointer'}
                 minW={0}
               >
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                  }
-                />
+                <Flex alignItems="center">
+                  <Avatar
+                    size={'sm'}
+                    src={
+                      'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    }
+                  />
+                  <Box ml="10px" color="#FFF">
+                    Olá, {context.user.username}
+                  </Box>
+                </Flex>
               </MenuButton>
+              <MenuDivider />
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem>Dados pessoais</MenuItem>
+                <MenuItem>Meus artigos</MenuItem>
+                <MenuItem>Artigos salvos</MenuItem>
+                <MenuItem>Sair</MenuItem>
               </MenuList>
             </Menu>
           )}
