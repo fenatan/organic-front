@@ -26,10 +26,10 @@ export default function Article({ article }) {
   return (
     <>
       <Box mb={8}>
-        <Heading mb={14}>{article.title}</Heading>
+        <Heading mb={14}>{article?.title}</Heading>
         <Text
           textAlign="left"
-          dangerouslySetInnerHTML={{ __html: article.content }}
+          dangerouslySetInnerHTML={{ __html: article?.content }}
         ></Text>
       </Box>
       <Box mb={10}>
@@ -37,7 +37,7 @@ export default function Article({ article }) {
           Tags
         </Heading>
         <Wrap spacing={5}>
-          {article.tags.map((tag, idx) => (
+          {article?.tags.map((tag, idx) => (
             <WrapItem key={idx}>
               <Box
                 cursor="pointer"

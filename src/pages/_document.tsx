@@ -39,7 +39,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head></Head>
-        <body>
+        <body style={{ background: '#000' }}>
           <Main></Main>
           <NextScript></NextScript>
         </body>

@@ -15,9 +15,9 @@ export default function UseCases({ article }) {
   return (
     <>
       <Box mb={8}>
-        <Heading mb={14}>{article.title}</Heading>
+        <Heading mb={14}>{article?.title}</Heading>
         <Wrap spacing={5}>
-          {article.cases.map((item, i) => (
+          {article?.cases.map((item, i) => (
             <WrapItem key={i}>
               <Box
                 mb={5}

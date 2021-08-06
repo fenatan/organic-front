@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Heading, Box, Link, Flex } from '@chakra-ui/react';
 
-export default function Sidebar() {
-  const categories = ['Descomplica', 'Design', 'Tecnologia'];
-  const selectedCategory = 'Design';
-
+export default function Sidebar({
+  categories,
+  selectedCategory,
+  onSelectCategory,
+}: any) {
   return (
     <Box mt={20} color="gray.50">
       <Heading fontSize="12px" fontWeight="700" mb={4}>
@@ -13,15 +15,17 @@ export default function Sidebar() {
         {categories &&
           categories.map((category) => (
             <Link
-              key={category}
+              key={category.slug}
               _hover={{ cursor: 'pointer', textDecoration: 'none' }}
               _focus={{ boxShadow: 'none' }}
               size="sm"
-              fontWeight={category === selectedCategory ? 'black' : 'normal'}
+              fontWeight={
+                category.slug == selectedCategory ? 'black' : 'normal'
+              }
               mb={3}
-              href={`/${category}`}
+              onClick={() => onSelectCategory(category)}
             >
-              {category}
+              {category.name}
             </Link>
           ))}
       </Flex>

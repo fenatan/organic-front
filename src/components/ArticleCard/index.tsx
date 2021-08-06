@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable jsx-a11y/alt-text */
-import Image from 'next/image';
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Image } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+export default function blogPostWithImage({ article }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
 
-export default function blogPostWithImage() {
   return (
     <Box mb={5}>
       <Box
+        onClick={() => router.push('/articles/' + article?.slug)}
         cursor="pointer"
         position="relative"
         overflow={'hidden'}
@@ -17,6 +21,7 @@ export default function blogPostWithImage() {
       >
         <Image
           src={
+            article?.image?.url ||
             'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
           }
           layout={'fill'}
@@ -24,7 +29,7 @@ export default function blogPostWithImage() {
       </Box>
       <Box maxW="230px">
         <Heading cursor="pointer" color="white.100" mb={1} fontSize="20px">
-          Title asdf asdf asdf asdfsaf asdfasdf
+          {article?.title}
         </Heading>
         <Heading
           cursor="pointer"
@@ -32,7 +37,7 @@ export default function blogPostWithImage() {
           fontSize="12px"
           fontWeight="light"
         >
-          Author
+          {article?.author?.username || 'Mateus Fernandes'}
         </Heading>
       </Box>
     </Box>

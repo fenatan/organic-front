@@ -16,8 +16,8 @@ export default function Files({ article }) {
   }
   return (
     <>
-      <Heading mb={14}>{article.title}</Heading>
-      {article.attachments.map((item, i) => (
+      <Heading mb={14}>{article?.title}</Heading>
+      {article?.attachments?.map((item, i) => (
         <Box
           key={i}
           mb={8}
