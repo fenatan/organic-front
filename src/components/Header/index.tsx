@@ -12,6 +12,7 @@ import {
   MenuItem,
   MenuDivider,
   Container,
+  Text,
 } from '@chakra-ui/react';
 
 import Logo from 'components/Logo';
@@ -83,11 +84,32 @@ export default function Header() {
                 </Flex>
               </MenuButton>
               <MenuDivider />
-              <MenuList>
-                <MenuItem>Dados pessoais</MenuItem>
-                <MenuItem>Meus artigos</MenuItem>
-                <MenuItem>Artigos salvos</MenuItem>
-                <MenuItem>Sair</MenuItem>
+              <MenuList color="#000" padding="20px">
+                <Box>
+                  <Flex>
+                    <Avatar
+                      size={'sm'}
+                      src={
+                        'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                      }
+                    />
+                    <Box ml="5">
+                      <Text>{context.user.username}</Text>
+                      <Text>{context.user.email}</Text>
+                    </Box>
+                  </Flex>
+                </Box>
+                <MenuDivider />
+                <Box>
+                  <MenuItem onClick={() => Router.push('/profile')}>
+                    Dados pessoais
+                  </MenuItem>
+                  <MenuItem onClick={() => Router.push('/my-articles')}>
+                    Meus artigos
+                  </MenuItem>
+                  <MenuItem>Artigos salvos</MenuItem>
+                  <MenuItem>Sair</MenuItem>
+                </Box>
               </MenuList>
             </Menu>
           )}
