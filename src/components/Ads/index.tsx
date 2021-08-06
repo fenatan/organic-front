@@ -11,53 +11,37 @@ export default function Ads() {
       <Box
         m="40px"
         display="flex"
-        flexWrap="wrap"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
       >
         <Box
-          w="330px"
-          h="200px"
+          w="405px"
+          height="351px"
           bg="gray.100"
           mr={10}
           position="relative"
           cursor="pointer"
         >
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
-            layout={'fill'}
-          />
+          <Image src={'/images/Banner-Triplo-separado.svg'} layout={'fill'} />
         </Box>
         <Box
-          w="330px"
-          h="200px"
+          w="405px"
+          height="351px"
           bg="gray.100"
           mr={10}
           position="relative"
           cursor="pointer"
         >
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
-            layout={'fill'}
-          />
+          <Image src={'/images/Banner-Triplo-separado2.svg'} layout={'fill'} />
         </Box>
         <Box
-          w="330px"
-          h="200px"
+          w="405px"
+          height="351px"
           bg="gray.100"
           position="relative"
           cursor="pointer"
         >
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
-            layout={'fill'}
-          />
+          <Image src={'/images/Banner-Triplo-separado3.svg'} layout={'fill'} />
         </Box>
       </Box>
     </Flex>
