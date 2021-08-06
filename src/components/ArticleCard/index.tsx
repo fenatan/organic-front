@@ -4,13 +4,13 @@ import { Box, Heading } from '@chakra-ui/react';
 
 export default function blogPostWithImage() {
   return (
-    <Box mb={10} mr={5}>
+    <Box mb={5}>
       <Box
         cursor="pointer"
         position="relative"
         overflow={'hidden'}
         bg="gray.300"
-        w="240px"
+        w="230px"
         h="140px"
         style={{ borderRadius: '16px' }}
         mb={2}
@@ -22,13 +22,13 @@ export default function blogPostWithImage() {
           layout={'fill'}
         />
       </Box>
-      <Box maxW="240px">
-        <Heading cursor="pointer" color="gray.50" fontSize="20px">
+      <Box maxW="230px">
+        <Heading cursor="pointer" color="white.100" mb={1} fontSize="20px">
           Title asdf asdf asdf asdfsaf asdfasdf
         </Heading>
         <Heading
           cursor="pointer"
-          color="gray.50"
+          color="white.100"
           fontSize="12px"
           fontWeight="light"
         >

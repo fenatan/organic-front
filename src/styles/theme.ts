@@ -21,7 +21,7 @@ const theme = {
   },
   colors: {
     white: {
-      100: '#ffffff',
+      100: '#ffffff', //usando
       50: '#eceff1',
       200: '#f2f2f3',
       300: '#fafafa',
@@ -32,10 +32,10 @@ const theme = {
     },
     gray: {
       50: '#E5E6E7', //usando
-      100: '#ddd',
+      100: '#C4C4C4',
       200: '#999',
       300: '#666', // usando
-      400: '#333',
+      400: '#333', // usando
     },
     primary: {
       100: '#00E88F',
