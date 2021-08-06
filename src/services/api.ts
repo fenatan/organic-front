@@ -4,7 +4,9 @@ import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-  uri: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337/graphql',
+  uri:
+    process.env.NEXT_PUBLIC_API_URL ||
+    'http://descomplicaja-1648230433.us-east-2.elb.amazonaws.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -31,7 +33,9 @@ export const uploadClient = new ApolloClient({
   ssrMode: true,
   link: authLink.concat(
     createUploadLink({
-      uri: 'http://descomplicaja-1648230433.us-east-2.elb.amazonaws.com/graphql',
+      uri:
+        process.env.NEXT_PUBLIC_API_URL ||
+        'http://descomplicaja-1648230433.us-east-2.elb.amazonaws.com/graphql',
     })
   ),
   cache: new InMemoryCache(),

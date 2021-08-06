@@ -15,6 +15,25 @@ async function getAll(): Promise<string> {
   return data.Articles;
 }
 
+async function getAllByCategory(slug: string): Promise<[]> {
+  const { data } = await api.query({
+    query: gql`
+      query Articles {
+        categories(where: { slug: "${slug}"}) {
+          name
+          articles {
+            title
+            author {
+              username
+            }
+          }
+        }
+      }
+    `,
+  });
+  return data?.categories[0]?.articles || [];
+}
+
 async function getArticleBySlug(slug: string): Promise<string> {
   const { data } = await api.query({
     query: gql`
@@ -50,4 +69,4 @@ async function createArticle(createArticle: ArticleInput): Promise<string> {
   return data.Articles;
 }
 
-export { getAll, createArticle };
+export { getAll, createArticle, getAllByCategory };
