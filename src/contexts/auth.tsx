@@ -12,7 +12,9 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<UserDto | null>(null);
   async function Login(email: string, password: string) {
     const token = await login(email, password);
-    localStorage.setItem('token', token);
+    if (localStorage) {
+      localStorage.setItem('token', token);
+    }
     const user = await me();
     setUser(user);
   }

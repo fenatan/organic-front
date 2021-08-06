@@ -6,7 +6,8 @@
         "ssr": true,
         "displayName": true
       }
-    ]
+    ],
+    "@emotion/babel-plugin"
   ],
   "presets": ["next/babel", "@babel/preset-typescript"],
   "env": {

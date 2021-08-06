@@ -14,9 +14,6 @@ export interface UserDto {
   role: RoleDto;
 }
 async function login(email: string, password: string): Promise<string> {
-  if (localStorage.getItem('token')) {
-    localStorage.removeItem('token');
-  }
   const { data } = await api.mutate({
     mutation: gql`
       mutation {
